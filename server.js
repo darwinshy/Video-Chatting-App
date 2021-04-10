@@ -3,6 +3,8 @@
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
+const http = require("http");
+const { ExpressPeerServer } = require("peer");
 // ***************************************************
 // To server the socketio.js files on the server
 const io = require("socket.io")(server);
@@ -12,8 +14,16 @@ const { v4: uuidV4 } = require("uuid");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+const pr = app.listen(3001);
+
+const peerServer = ExpressPeerServer(pr, {
+  path: "/",
+});
+
+app.use("/", peerServer);
 // ***************************************************
 // Routes
+
 app.get("/", (req, res) => {
   res.redirect(`/${uuidV4()}`);
 });

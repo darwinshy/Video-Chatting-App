@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "concurrently \"node server.js\" \"peerjs --port 3001\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,11 +12,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^6.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "peer": "^0.6.1",
     "socket.io": "^4.0.1",
-    "uuid": "^8.3.2",
-    "concurrently": "^6.0.1"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "concurrently": "^6.0.1",

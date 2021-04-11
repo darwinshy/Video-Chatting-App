@@ -7,7 +7,10 @@ const server = http.createServer(app);
 const { ExpressPeerServer } = require("peer");
 // ***************************************************
 // To server the socketio.js files on the server
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  transports: ["websocket", "polling"],
+  allowEIO3: true,
+});
 // ***************************************************
 const { v4: uuidV4 } = require("uuid");
 // ***************************************************

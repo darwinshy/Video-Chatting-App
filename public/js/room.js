@@ -1,11 +1,10 @@
 const socket = io.connect("/", {
-  transports: ["websocket"],
+  transports: ["polling", "websocket"],
 });
 const peers = {};
 const myPeer = new Peer(undefined, {
   host: "/",
   port: "8080",
-  secure: true,
 });
 
 const videoBox = document.getElementById("video-grid");

@@ -4,6 +4,7 @@ const socket = io.connect("/", {
 const peers = {};
 const myPeer = new Peer(undefined, {
   host: "/",
+  port: "8080",
   secure: true,
 });
 

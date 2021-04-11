@@ -1,5 +1,6 @@
 const socket = io.connect("https://chatonws.herokuapp.com", {
   withCredentials: true,
+  transports: ["websocket"],
 });
 const peers = {};
 const myPeer = new Peer(undefined, {

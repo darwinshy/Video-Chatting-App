@@ -2,8 +2,8 @@
 // Imports
 const express = require("express");
 const app = express();
-const server = require("http").Server(app);
 const http = require("http");
+const server = http.createServer(app);
 const { ExpressPeerServer } = require("peer");
 // ***************************************************
 // To server the socketio.js files on the server
@@ -14,13 +14,6 @@ const { v4: uuidV4 } = require("uuid");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-const pr = app.listen(443);
-
-const peerServer = ExpressPeerServer(pr, {
-  path: "/",
-});
-
-app.use("/", peerServer);
 // ***************************************************
 // Routes
 
@@ -34,9 +27,9 @@ app.get("/:room", (req, res) => {
 // ***************************************************
 // Socket IO Logic
 io.on("connection", (socket) => {
-  socket.on("join-room", (roomID, userID) => {
-    onJoinRoom(roomID, userID, socket);
-  });
+  socket.on("join-room", (roomID, userID) =>
+    onJoinRoom(roomID, userID, socket)
+  );
 });
 
 function onJoinRoom(roomID, userID, socket) {
@@ -49,5 +42,10 @@ function onJoinRoom(roomID, userID, socket) {
 }
 
 // ***************************************************
+
+const peerServer = ExpressPeerServer(app.listen(process.env.PORT), {
+  path: "/",
+});
+app.use("/", peerServer);
 server.listen(process.env.PORT || 3000, () => console.log("Started"));
 // ***************************************************

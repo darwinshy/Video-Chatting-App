@@ -24,7 +24,7 @@ app.use("/", peerServer);
 // ***************************************************
 // Routes
 
-app.get("/", (req, res) => {
+app.get("/new", (req, res) => {
   res.redirect(`/${uuidV4()}`);
 });
 app.get("/:room", (req, res) => {

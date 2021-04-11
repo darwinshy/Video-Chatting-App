@@ -7,7 +7,13 @@ const http = require("http");
 const { ExpressPeerServer } = require("peer");
 // ***************************************************
 // To server the socketio.js files on the server
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://chatonws.herokuapp.com",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 // ***************************************************
 const { v4: uuidV4 } = require("uuid");
 // ***************************************************

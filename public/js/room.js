@@ -1,4 +1,6 @@
-const socket = io.connect("/");
+const socket = io.connect("https://chatonws.herokuapp.com", {
+  withCredentials: true,
+});
 const peers = {};
 const myPeer = new Peer(undefined, {
   host: "/",

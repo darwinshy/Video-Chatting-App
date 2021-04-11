@@ -1,11 +1,11 @@
-const socket = io.connect("https://chatonws.herokuapp.com", {
-  withCredentials: true,
+const socket = io.connect("/", {
   transports: ["websocket"],
 });
 const peers = {};
 const myPeer = new Peer(undefined, {
   host: "/",
-  port: "3001",
+  port: 3001,
+  secure: true,
 });
 
 const videoBox = document.getElementById("video-grid");

@@ -4,7 +4,7 @@ const socket = io.connect("/", {
 const peers = {};
 const myPeer = new Peer(undefined, {
   host: "/",
-  port: 3001,
+  port: 443,
   secure: true,
 });
 

@@ -14,7 +14,7 @@ const { v4: uuidV4 } = require("uuid");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-const pr = app.listen(3001);
+const pr = app.listen(443);
 
 const peerServer = ExpressPeerServer(pr, {
   path: "/",
